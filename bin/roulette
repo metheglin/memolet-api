@@ -1,0 +1,14 @@
+#!/usr/bin/env ruby
+
+AXIS = 2
+DATA_TYPES = [
+  "concept", "character", "product", "serif", "situation"
+]
+
+words = []
+DATA_TYPES.shuffle.first(AXIS).each do |type|
+  path = File.expand_path( "../../data/#{type}", __FILE__ )
+  words << File.readlines( path ).sample.chomp
+end
+
+puts words.join(" × ")
