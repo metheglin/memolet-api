@@ -10,4 +10,8 @@ class Memo < Resource
   #     errors.add(:user_id, "can't be accepted")
   #   end
   # end
+
+  scope :user, -> (user_id) { 
+    joins(:entry).where("entries.user_id" => user_id)
+  }
 end

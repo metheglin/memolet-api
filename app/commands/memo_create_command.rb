@@ -12,6 +12,7 @@ class MemoCreateCommand
 
   def build_nested_params( params )
     all_tags = params.delete :tags
+    all_tags = ["default"] if all_tags.nil? or all_tags.empty?
     exist_tags = Tag.where(
       user_id: user_id,
       name: all_tags

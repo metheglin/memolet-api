@@ -1,10 +1,12 @@
 class V1::MemosController < PrivateResourceController
   def index
-    items = Memo.user(current_user.id).where(user_id: params[:user_id])
+    items = Memo.user(current_user.id)
     render json: items
   end
 
   def create
+    pp params
+    pp memo_params
     memo = MemoCreateCommand.new(current_user.id).exec!( memo_params )
     # memo = Memo.create!(memo_params)
     render json: {
