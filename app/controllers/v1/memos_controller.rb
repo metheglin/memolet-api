@@ -5,8 +5,6 @@ class V1::MemosController < PrivateResourceController
   end
 
   def create
-    pp params
-    pp memo_params
     memo = MemoCreateCommand.new(current_user.id).exec!( memo_params )
     # memo = Memo.create!(memo_params)
     render json: {
